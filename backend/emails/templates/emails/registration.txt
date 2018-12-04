@@ -1,0 +1,9 @@
+Hey {{name}},
+
+Thanks for joining devdb.
+
+Please open the following link to confirm your email and finish registration:
+{{link}}
+
+Sincerely,
+@devdb_bot

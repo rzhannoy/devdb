@@ -1,0 +1,46 @@
+#app
+  .button
+    letter-spacing 1px !important
+
+    &:hover
+      opacity .66
+
+    &.disabled
+      opacity .5
+      pointer-events none
+
+    &.is-black
+      color #000 !important
+
+    &.is-blue
+      color #005CFF !important
+
+    &.is-red
+      color #ef456a !important
+
+    &.is-cta
+      border 0
+      background-color #005CFF
+      color #fff
+
+      &.is-outlined
+        color #005CFF !important
+        border 1px solid #005CFF
+        background-color transparent
+
+        &:hover
+          opacity 1
+          background-color #005CFF
+          color #fff !important
+
+    &.is-card
+      background-color rgba(0,0,0,.08)
+      border 0
+      color rgba(0,0,0,.6)
+      font-weight 500
+
+  .link-red
+    color #ef456a
+
+    &:hover
+      color #444

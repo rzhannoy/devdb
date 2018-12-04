@@ -1,0 +1,107 @@
+#app
+  label, .label
+    font-weight 500
+
+  .field.is-50
+    .input
+      +$desktop-only()
+        width 50%
+
+  .field
+    .select, select
+      width 100%
+
+    .input[disabled]
+      border-color rgba(0,0,0,.08)
+
+  .is-invalid
+    label, .help
+      color #ff3860
+
+    .input, .textarea, select, .ql-toolbar, .ql-container
+      border-color #ff3860 !important
+
+.form-brand
+  .card-brand
+    margin-bottom 40px
+    padding 20px 27px
+
+    .field
+      margin-bottom 1rem
+
+    +$mobile-only()
+      padding 15px 15px
+
+      .field
+        margin-bottom .75rem
+
+    .columns
+      margin-top 1px
+      margin-bottom 0
+
+    .column
+      padding-top 0
+      padding-bottom 0
+
+  .card-heading
+    margin-bottom 20px
+
+  .card-controls
+    float right
+
+    a
+      padding-left 5px
+      padding-right 5px
+      margin-left 5px
+
+      +$mobile-only()
+        padding-left 3px
+        padding-right 3px
+        margin-left 3px
+
+
+  .add-card-button
+    margin-bottom 40px
+
+    .button
+      font-weight 500
+
+.wrapper-draggable-form
+  padding .5rem 0
+
+  .columns
+    margin-bottom 0
+
+    .column
+      padding-bottom 0
+
+  .field
+    margin-bottom 0 !important
+
+  .col-controls
+    padding-top 7px !important
+    text-align right
+
+    i
+      font-size 20px
+
+    a
+      padding-left 5px
+      margin-left 5px
+
+  .drag-handle
+    padding-top 2px !important
+    line-height 1
+    cursor move
+
+    i
+      opacity .6
+      font-size 34px
+
+    .is-pulled-right
+      i
+        font-size 25px
+
+  .col-upper
+    +$mobile-only()
+      margin-bottom 8px

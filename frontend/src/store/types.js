@@ -1,0 +1,18 @@
+export default {
+  SET_STATE_PROPERTY: 'setStateProperty',
+  RESET_STATE: 'resetState',
+  INIT_APP: 'initApp',
+  INIT_HTTP: 'initHttp',
+  INIT_RESOURCES: 'initResources',
+  REGISTER: 'register',
+  LOGIN: 'login',
+  LOGOUT: 'logout',
+  SHOW_SUCCESS_MESSAGE: 'showSuccessMessage',
+  SHOW_ERROR_MESSAGE: 'showErrorMessage',
+  HANDLE_GENERIC_ERROR: 'handleGenericError',
+  CONFIRM_EMAIL: 'confirmEmail',
+  FETCH_USER: 'fetchUser',
+  SET_NOTIFICATIONS: 'setNotifications',
+  UPDATE_PROFILE: 'updateProfile',
+  SET_USER: 'setUser',
+}

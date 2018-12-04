@@ -1,0 +1,8 @@
+Hey {{name}},
+
+Someone sent you a message via devdb:
+
+"{{message}}"
+
+Sincerely,
+@devdb_bot
