@@ -9,7 +9,7 @@ except ImportError:
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 PARENT_DIR = os.path.abspath(os.path.join(PROJECT_DIR, '..'))
-PUBLIC_DIR = os.path.abspath(os.path.join(PARENT_DIR, '../public'))
+PUBLIC_DIR = os.path.abspath(os.path.join(PARENT_DIR, '../../public'))
 
 sys.path.insert(0, os.path.abspath(os.path.join(PARENT_DIR, 'libs')))
 
