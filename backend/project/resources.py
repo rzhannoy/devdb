@@ -50,9 +50,7 @@ class BaseResource(ModelResource):
         if extra_data:
             bundle.data.update(extra_data)
 
-        serialized = self.full_dehydrate(bundle, **kwargs)
-
-        return serialized
+        return self.full_dehydrate(bundle, **kwargs)
 
     def serialize_collection(self, request, collection):
         serialized = []

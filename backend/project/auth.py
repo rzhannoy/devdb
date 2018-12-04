@@ -7,6 +7,12 @@ class BaseAuthorization(Authorization):
     def reject(self):
         raise Unauthorized('permission_rejected')
 
+    def user_check(self, bundle, user_id):
+        if bundle.request.user.id == user_id:
+            return True
+
+        self.reject()
+
     def read_list(self, object_list, bundle):
         self.reject()
 

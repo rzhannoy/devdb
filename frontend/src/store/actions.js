@@ -39,7 +39,7 @@ export default {
             } else if (data.message.handle_exists) {
               message = 'User with such handle already exists'
             } else if (data.message.handle_length) {
-              message = 'Please increase your handle to 4 characters minimum'
+              message = 'Handle should be 4 characters minimum'
             }
 
             commit(types.SHOW_ERROR_MESSAGE, { message })

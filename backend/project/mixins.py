@@ -1,13 +1,13 @@
 import bleach
-from bleach.linkifier import Linker
+# from bleach.linkifier import Linker
 
 from django.conf import settings
 
 
-linker = Linker(callbacks=[
-    bleach.callbacks.nofollow,
-    bleach.callbacks.target_blank,
-])
+# linker = Linker(callbacks=[
+#     bleach.callbacks.nofollow,
+#     bleach.callbacks.target_blank,
+# ])
 
 
 class HtmlFieldsMixin(object):

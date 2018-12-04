@@ -6,7 +6,4 @@ class UserAuthorization(BaseAuthorization):
         return True
 
     def update_detail(self, object_list, bundle):
-        if bundle.obj.id == bundle.request.user.id:
-            return True
-
-        self.reject()
+        self.user_check(bundle, bundle.obj.id)

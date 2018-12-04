@@ -110,7 +110,7 @@ export default {
 
           if (err === 'not_found') {
             this.$router.push({ name: 'home' })
-            this[types.SHOW_ERROR_MESSAGE]({ message: 'Such CV does not exist' })
+            this[types.SHOW_ERROR_MESSAGE]({ message: 'CV does not exist' })
           }
         })
     },
