@@ -1,6 +1,8 @@
 import os
 import sys
 
+from corsheaders.defaults import default_headers
+
 try:
     from settings_local import *
 except ImportError:
@@ -94,8 +96,13 @@ CELERY_BROKER_URL = 'amqp://guest:guest@localhost//'
 # DJANGO-CORS-HEADERS
 if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
+
 else:
-    CORS_ORIGIN_WHITELIST = ('devdb.io', 'api.devdb.io',)
+    CORS_ORIGIN_WHITELIST = ('devdb.io',)
+    CORS_ALLOW_HEADERS = default_headers + (
+        'access-control-allow-origin',
+    )
+
 
 # BLEACH
 HTML_ALLOWED_TAGS = [
