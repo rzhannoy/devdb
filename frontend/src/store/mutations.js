@@ -26,7 +26,7 @@ export default {
     if (hostname.indexOf('localhost') > -1) {
       apiUrl = 'http://127.0.0.1:8000/api/'
     } else {
-      apiUrl = 'https://api.devdb.io/'
+      apiUrl = 'https://api.devdb.io/api/'
     }
 
     const headers = {}
