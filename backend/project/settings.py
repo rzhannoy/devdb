@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(PARENT_DIR, 'libs')))
 SECRET_KEY = '(pmk9(b79_pu=9bxa1ii^*r3kpy75-q(@rcye*#un)6hyfuj17'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -99,9 +100,9 @@ if DEBUG:
 
 else:
     CORS_ORIGIN_WHITELIST = ('devdb.io',)
-    CORS_ALLOW_HEADERS = default_headers + (
-        'access-control-allow-origin',
-    )
+    # CORS_ALLOW_HEADERS = default_headers + (
+    #     'access-control-allow-origin',
+    # )
 
 
 # BLEACH
