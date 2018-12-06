@@ -33,9 +33,9 @@
                   </a>
                 </div>
                 <div>
-                  <button class="button is-cta is-medium has-shadow"
+                  <button class="button is-cta is-main is-medium has-shadow"
                     @click="showAuthForm = true">
-                    Create Yours
+                    Get started for free
                   </button>
                 </div>
               </div>
@@ -177,4 +177,9 @@ export default {
 
     &:hover
       background-color #fff
+
+.button.is-main
+  padding 8px 20px
+  font-weight 500
+  font-size 18px
 </style>
