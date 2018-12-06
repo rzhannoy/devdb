@@ -6,4 +6,4 @@ class UserAuthorization(BaseAuthorization):
         return True
 
     def update_detail(self, object_list, bundle):
-        self.user_check(bundle, bundle.obj.id)
+        return self.user_check(bundle, bundle.obj.id)

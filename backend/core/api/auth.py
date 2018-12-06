@@ -14,7 +14,7 @@ class CvAuthorization(BaseAuthorization):
 
 class CvChildAuthorization(BaseAuthorization):
     def user_check_local(self, bundle):
-        self.user_check(bundle, bundle.obj.cv.user_id)
+        return self.user_check(bundle, bundle.obj.cv.user_id)
 
     def read_detail(self, object_list, bundle):
         return True
@@ -23,18 +23,18 @@ class CvChildAuthorization(BaseAuthorization):
         return object_list
 
     def update_detail(self, object_list, bundle):
-        self.user_check_local(bundle)
+        return self.user_check_local(bundle)
 
     def create_detail(self, object_list, bundle):
-        self.user_check_local(bundle)
+        return self.user_check_local(bundle)
 
     def delete_detail(self, object_list, bundle):
-        self.user_check_local(bundle)
+        return self.user_check_local(bundle)
 
 
 class SkillAuthorization(BaseAuthorization):
     def user_check_local(self, bundle):
-        self.user_check(bundle, bundle.obj.group.cv.user_id)
+        return self.user_check(bundle, bundle.obj.group.cv.user_id)
 
     def read_detail(self, object_list, bundle):
         return True
@@ -43,10 +43,10 @@ class SkillAuthorization(BaseAuthorization):
         return object_list
 
     def update_detail(self, object_list, bundle):
-        self.user_check_local(bundle)
+        return self.user_check_local(bundle)
 
     def create_detail(self, object_list, bundle):
-        self.user_check_local(bundle)
+        return self.user_check_local(bundle)
 
     def delete_detail(self, object_list, bundle):
-        self.user_check_local(bundle)
+        return self.user_check_local(bundle)

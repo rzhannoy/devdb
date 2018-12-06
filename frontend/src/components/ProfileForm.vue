@@ -107,6 +107,7 @@ import vueScrollTo from 'vue-scrollto'
 
 import { mapState, mapMutations, mapActions } from 'vuex'
 import types from '../store/types'
+import conf from '../conf'
 
 import cvObjectsMixin from '../mixins/cvObjectsMixin'
 

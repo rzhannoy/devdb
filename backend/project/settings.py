@@ -100,10 +100,6 @@ if DEBUG:
 
 else:
     CORS_ORIGIN_WHITELIST = ('devdb.io',)
-    # CORS_ALLOW_HEADERS = default_headers + (
-    #     'access-control-allow-origin',
-    # )
-
 
 # BLEACH
 HTML_ALLOWED_TAGS = [
