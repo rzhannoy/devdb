@@ -87,6 +87,10 @@ export default {
 
   created () { this.init() },
 
+  watch: {
+    obj: 'setPageTitle',
+  },
+
   computed: {
     handle () { return this.$route.params.handle },
     obj () { return this.profiles[this.handle] },
@@ -113,6 +117,13 @@ export default {
             this[types.SHOW_ERROR_MESSAGE]({ message: 'CV does not exist' })
           }
         })
+    },
+
+    setPageTitle () {
+      const name = this.obj.first_name
+      if (name) {
+        document.title = `${this.obj.first_name}'s CV | Devdb`
+      }
     },
 
     ...mapMutations([types.SHOW_ERROR_MESSAGE]),

@@ -76,6 +76,7 @@ export default {
   },
 
   created () {
+    document.title = 'Devdb • Best CV builder for developers'
     this.handleEmailConfirmation()
   },
 
