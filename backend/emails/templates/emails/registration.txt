@@ -3,7 +3,7 @@ Hey {{name}},
 Thanks for joining devdb.
 
 Please open the following link to confirm your email and finish registration:
-{{link}}
+{{link|safe}}
 
 Sincerely,
 @devdb

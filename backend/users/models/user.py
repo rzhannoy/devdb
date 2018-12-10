@@ -103,7 +103,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def register(data):
         user = User.objects.create_user(**data)
         Cv.objects.create(user=user)
-        # mailer.send_registration_email(user)
+        mailer.send_registration_email(user)
 
         return user
 

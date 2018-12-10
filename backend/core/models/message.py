@@ -16,5 +16,4 @@ class Message(Model):
         return self.message[:25]
 
     def send(self):
-        # mailer.send_cv_message(self)
-        pass
+        mailer.send_cv_message(self)

@@ -14,8 +14,8 @@ class Mailer(object):
 
     def send_test(self):
         msg = EmailMultiAlternatives(
-            'Confirm your email for 1B',
-            'Hello, Nick Ten. Please confirm your email. Regards, 1B team.',
+            'From DevDB to Nick Ten',
+            'Hello, Nick Ten. Please confirm your email. Regards, @devdb',
             settings.DEFAULT_FROM_EMAIL,
             ['nrzhannoy@gmail.com']
         )

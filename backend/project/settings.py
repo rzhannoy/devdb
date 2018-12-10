@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'annoying',
     'corsheaders',
+    'anymail',
 
     'users',
     'core',
@@ -107,3 +108,15 @@ HTML_ALLOWED_TAGS = [
     's', 'sub', 'sup',
     'ul', 'ol', 'li',
 ]
+
+# DJANGO-ANYMAIL
+ANYMAIL = {
+    'MAILGUN_API_KEY': 'key-4c2df4a7f19aeff7dd42329c31c6056b',
+    'MAILGUN_SENDER_DOMAIN': 'mg.devdb.io',
+}
+EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+DEFAULT_FROM_EMAIL = 'DevDB <hi@devdb.io>'
+
+# CELERY
+CELERY_ACCEPT_CONTENT = ['pickle', 'json']
+CELERY_TASK_SERIALIZER = 'pickle'
