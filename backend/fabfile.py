@@ -25,7 +25,6 @@ def deploy_backend():
             run('{}collectstatic'.format(MANAGE_PY))
 
         run('sudo supervisorctl pid devdb | xargs kill -HUP')
-        run('sudo supervisorctl status devdb')
         run('sudo supervisorctl restart devdb-celery')
 
         run('{}check'.format(MANAGE_PY))

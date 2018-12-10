@@ -17,7 +17,7 @@
         <b-input name="handle" placeholder="handle"
           maxlength="25"
           v-model="objData.handle"
-          v-validate="'required|min:4'"
+          v-validate="'required|min:5'"
           :has-counter="false">
         </b-input>
       </b-field>

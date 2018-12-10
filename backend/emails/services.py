@@ -23,7 +23,7 @@ class Mailer(object):
         self.send_email(msg)
 
     def send_registration_email(self, user):
-        subject = 'Get started with devdb'
+        subject = 'Get started with DevDB'
         body = render_to_string('emails/registration.txt', {
             'name': user.gen_name(),
             'link': user.gen_confirmation_link(),
@@ -36,7 +36,7 @@ class Mailer(object):
         self.send_email(email)
 
     def send_cv_message(self, message):
-        subject = 'Devdb: You received a new message'
+        subject = 'DevDB: You received a new message'
         body = render_to_string('emails/cv_message.txt', {
             'name': message.to.gen_name(),
             'message': message.message,

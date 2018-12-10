@@ -80,6 +80,7 @@ INSTALLED_APPS = [
 
     'users',
     'core',
+    'emails',
 ]
 
 
@@ -89,7 +90,7 @@ INSTALLED_APPS = [
 
 # DJANGO
 AUTH_USER_MODEL = 'users.User'
-USER_HANDLE_LIMIT = 4
+USER_HANDLE_LIMIT = 5
 APPEND_SLASH = False
 
 # CELERY
