@@ -108,7 +108,7 @@ export default {
       if (this.refocused === false && e.target.value.length === 1) {
         this.refocused = true
         // this.$nextTick(() => { this.$refs.title.focus() })
-        setTimeout(() => { this.$refs.title.focus() }, 100)
+        setTimeout(() => { this.$refs.title.focus() }, 1000)
       }
     },
   },
