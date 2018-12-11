@@ -7,7 +7,6 @@
         Save
       </button>
       <router-link class="button is-text"
-        target="_blank"
         :class="{'disabled': isLoading}"
         :to="{ name: 'profile', params: { handle: objData.handle } }">
         View

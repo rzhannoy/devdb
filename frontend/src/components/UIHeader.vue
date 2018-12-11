@@ -21,7 +21,7 @@
             <router-link v-else-if="showViewButton"
               class="button is-cta is-outlined"
               :to="{ name: 'profile', params: { handle: user.handle } }">
-              Cancel
+              Back
             </router-link>
 
             <template v-else>

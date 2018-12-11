@@ -18,7 +18,9 @@
             <b-input placeholder="Frontend"
               v-model="obj.title"
               :maxlength="100"
-              :has-counter="false"></b-input>
+              ref="title"
+              :has-counter="false"
+              @blur="handleBlur"></b-input>
           </b-field>
         </div>
       </div>
@@ -76,6 +78,7 @@ export default {
   data () {
     return {
       draggableOptions: conf.DRAGGABLE_OPTIONS,
+      refocused: false,
     }
   },
 
@@ -99,6 +102,13 @@ export default {
       this.obj.skills = _.filter(this.obj.skills, (obj) => {
         return obj.key !== key
       })
+    },
+
+    handleBlur (e) {
+      if (this.refocused === false && e.target.value.length === 1) {
+        this.$refs.title.focus()
+        this.refocused = true
+      }
     },
   },
 }
