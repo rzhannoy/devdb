@@ -107,7 +107,8 @@ export default {
     handleBlur (e) {
       if (this.refocused === false && e.target.value.length === 1) {
         this.refocused = true
-        this.$nextTick(() => { this.$refs.title.focus() })
+        // this.$nextTick(() => { this.$refs.title.focus() })
+        setTimeout(() => { this.$refs.title.focus() }, 100)
       }
     },
   },
