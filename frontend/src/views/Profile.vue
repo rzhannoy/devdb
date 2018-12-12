@@ -11,7 +11,7 @@
           <h2>Quickstart</h2>
           <CvTags class="tags"
             :obj="cv"/>
-          <p class="mbb"
+          <p class="mbb content-brand"
             v-if="cv.introduction"
             v-html="cv.introduction"></p>
           <h2>Skills</h2>
@@ -34,7 +34,8 @@
           </div>
           <div v-if="cv.other_details">
             <h2 class="mt50">Other Details</h2>
-            <div class="other-details" v-html="cv.other_details">
+            <div class="other-details content-brand"
+              v-html="cv.other_details">
             </div>
           </div>
           <CvLinks v-if="cv.links.length" :objs="cv.links"/>
@@ -149,10 +150,6 @@ export default {
 .other-details >>>
   font-size 18px
   color #000
-
-  ul
-    margin-top 12px
-    margin-left 1.2em
 
 .col-inactive
   padding-top 50px

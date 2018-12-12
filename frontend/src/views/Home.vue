@@ -28,7 +28,8 @@
                   CVs for Developers
                 </h1>
                 <div class="mbs">
-                  <a href="" class="button button-link is-medium is-white">
+                  <a href="https://devdb.io/devdb" target="_blank"
+                    class="button button-link is-medium is-white">
                     See how it looks
                   </a>
                 </div>

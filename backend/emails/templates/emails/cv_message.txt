@@ -1,6 +1,6 @@
 Hey {{name}},
 
-Someone sent you a message via devdb:
+Someone sent you a message:
 
 "{{message}}"
 
