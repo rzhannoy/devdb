@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper-header">
-    <header :class="{'auto-height': showMessageForm}">
+    <header :class="{
+      'auto-height': showMessageForm,
+      'header-compact': isMobile && isAndroid,
+    }">
       <Column>
         <div class="header-inner">
           <h1 class="title">
@@ -108,6 +111,17 @@ header
 
   &.auto-height
     height auto
+
+  &.header-compact
+    padding-top 8px
+    padding-bottom 8px
+    height auto
+
+    .title
+      font-size 1.33rem
+
+    .button
+      height 1.5rem
 
   .title
     margin-bottom 0

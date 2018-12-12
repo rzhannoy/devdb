@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper-profile-form form-brand">
-    <div class="actions-fixed">
+    <div class="actions-fixed"
+      :class="{'compact': isMobile && isAndroid}">
       <button class="button is-cta"
         :class="{'is-loading': isLoading}"
         @click="handleSubmit">
@@ -345,4 +346,14 @@ export default {
     .is-cta
       padding-left 33px
       padding-right 33px
+
+  &.compact
+    padding-top 8px
+    padding-bottom 8px
+
+    .button
+      height 1.6rem
+
+    .is-cta
+      padding-top 1px
 </style>

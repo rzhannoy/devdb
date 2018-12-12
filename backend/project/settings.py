@@ -108,6 +108,7 @@ HTML_ALLOWED_TAGS = [
     'p', 'strong', 'em',
     's', 'sub', 'sup',
     'ul', 'ol', 'li',
+    'br',
 ]
 
 # DJANGO-ANYMAIL

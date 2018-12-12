@@ -105,6 +105,8 @@ export default {
 
   methods: {
     init () {
+      this.setPageTitle()
+
       if (!this.profiles[this.handle]) { this.isFetching = true }
 
       this[types.FETCH_USER]({ handle: this.handle })
@@ -120,8 +122,7 @@ export default {
     },
 
     setPageTitle () {
-      const name = this.obj.first_name
-      if (name) {
+      if (this.obj && this.obj.first_name) {
         document.title = `${this.obj.first_name}'s CV | Devdb`
       }
     },
