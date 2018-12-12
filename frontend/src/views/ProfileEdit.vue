@@ -16,7 +16,7 @@ export default {
   components: { Header, ProfileForm },
 
   created () {
-    document.title = 'Edit Your Profile | Devdb'
+    document.title = 'Edit Your Profile | DevDB'
     this.init()
   },
 

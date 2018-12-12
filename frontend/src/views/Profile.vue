@@ -124,7 +124,7 @@ export default {
 
     setPageTitle () {
       if (this.obj && this.obj.first_name) {
-        document.title = `${this.obj.first_name}'s CV | Devdb`
+        document.title = `${this.obj.first_name}'s CV | DevDB`
       }
     },
 
