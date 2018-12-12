@@ -2,7 +2,7 @@
   <div class="wrapper-header">
     <header :class="{
       'auto-height': showMessageForm,
-      'header-compact': isMobile && isAndroid,
+      'header-compact': isCompact,
     }">
       <Column>
         <div class="header-inner">
@@ -79,6 +79,12 @@ export default {
 
     showViewButton () {
       return this.user && this.$route.name === 'profile-edit'
+    },
+
+    isCompact () {
+      return this.$route.name === 'profile-edit' &&
+        this.isMobile &&
+        this.isAndroid
     },
 
     ...mapState(['User', 'user']),
