@@ -4,9 +4,9 @@
       <div class="tag" v-if="obj.specialty">
         {{obj.specialty}}
       </div>
-      <div class="tag" v-if="User.genAgeGender(obj)">
+      <!-- <div class="tag" v-if="User.genAgeGender(obj)">
         {{User.genAgeGender(obj)}}
-      </div>
+      </div> -->
       <div class="tag" v-if="User.shouldDisplay(obj.remote)">
         {{User.REMOTE_VERBOSE[obj.remote]}}
       </div>

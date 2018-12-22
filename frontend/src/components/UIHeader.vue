@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper-header">
     <header :class="{
-      'auto-height': showMessageForm,
+      'auto-height': anyFormActive,
       'header-compact': isCompact,
     }">
       <Column>
@@ -10,22 +10,51 @@
             {{User.genName(obj)}}
           </h1>
           <div class="header-menu">
-            <template v-if="showProfileButtons">
-              <router-link class="button is-white is-blue"
+            <template v-if="showMenu">
+              <b-dropdown v-if="!anyFormActive" position="is-bottom-left"
+                :mobile-modal="false">
+                <span slot="trigger" class="button is-white is-blue" href="">
+                  Menu
+                </span>
+
+                <b-dropdown-item
+                  :has-link="true">
+                  <router-link 
+                    :to="{ name: 'profile-edit' }">
+                    Edit profile
+                  </router-link>
+                </b-dropdown-item>
+                <b-dropdown-item
+                  :has-link="true">
+                  <router-link
+                    :to="{ name: 'profile', params: { handle: user.handle } }">
+                    View profile
+                  </router-link>
+                </b-dropdown-item>
+                <!-- <b-dropdown-item
+                  @click="showPasswordForm = true">
+                  Change password
+                </b-dropdown-item> -->
+                <b-dropdown-item
+                  @click="handleLogout">
+                  Log out
+                </b-dropdown-item>
+              </b-dropdown>
+              <!-- <router-link class="button is-white is-blue"
                 :to="{ name: 'profile-edit' }">
                 Edit
               </router-link>
               <button class="button is-white is-red"
                 @click="handleLogout">
                 Log out
-              </button>
+              </button> -->
             </template>
 
-            <router-link v-else-if="showViewButton"
+            <!-- <router-link v-else-if="showViewButton"
               class="button is-cta is-outlined"
               :to="{ name: 'profile', params: { handle: user.handle } }">
               Back
-            </router-link>
+            </router-link> -->
 
             <template v-else>
               <button v-if="!showMessageForm"
@@ -41,6 +70,8 @@
         <MessageForm v-if="showMessageForm"
           :toId="obj.id"
           @close="showMessageForm = false"/>
+        <PasswordForm v-if="showPasswordForm"
+          @close="showPasswordForm = false"/>
       </Column>
     </header>
   </div>
@@ -52,11 +83,15 @@ import types from '../store/types'
 
 import Column from './UIColumn'
 import MessageForm from './MessageForm'
+import PasswordForm from './PasswordForm'
 
 export default {
   name: 'Header',
 
-  components: { Column, MessageForm },
+  components: {
+    Column, MessageForm,
+    PasswordForm,
+  },
 
   props: {
     obj: { type: Object, default () { return {} } }, // User
@@ -65,21 +100,26 @@ export default {
   data () {
     return {
       showMessageForm: false,
+      showPasswordForm: false,
     }
   },
 
   computed: {
-    showProfileButtons () {
+    anyFormActive () {
+      return this.showMessageForm || this.showPasswordForm
+    },
+
+    showMenu () {
       const route = this.$route
 
-      return this.user &&
+      return route.name === 'profile-edit' || (this.user &&
         route.name === 'profile' &&
-        route.params.handle === this.user.handle
+        route.params.handle === this.user.handle)
     },
 
-    showViewButton () {
-      return this.user && this.$route.name === 'profile-edit'
-    },
+    // showViewButton () {
+    //   return this.user && this.$route.name === 'profile-edit'
+    // },
 
     isCompact () {
       return this.$route.name === 'profile-edit' &&

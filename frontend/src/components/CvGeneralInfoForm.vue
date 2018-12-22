@@ -12,11 +12,19 @@
         </div>
 
         <div class="column">
+          <b-field label="Timezone">
+            <b-input placeholder="UTC+7"
+              v-model="obj.timezone"
+              :maxlength="20"
+              :has-counter="false"></b-input>
+          </b-field>
+        </div>
+        <!-- <div class="column">
           <b-field label="Age">
             <b-input placeholder="29" type="number"
               v-model="obj.age"></b-input>
           </b-field>
-        </div>
+        </div> -->
       </div>
 
       <div class="columns">
@@ -67,16 +75,7 @@
         </div>
       </div>
 
-      <div class="columns">
-        <div class="column">
-          <b-field label="Timezone">
-            <b-input placeholder="UTC+7"
-              v-model="obj.timezone"
-              :maxlength="20"
-              :has-counter="false"></b-input>
-          </b-field>
-        </div>
-
+      <!-- <div class="columns">
         <div class="column">
           <b-field label="Gender">
             <b-select placeholder="Select your gender"
@@ -89,7 +88,7 @@
             </b-select>
           </b-field>
         </div>
-      </div>
+      </div> -->
 
       <b-field label="Introduction Text"
         :class="{'is-invalid': User.htmlTextareaInvalid(obj.introduction)}"

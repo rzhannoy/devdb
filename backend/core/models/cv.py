@@ -69,3 +69,9 @@ class Cv(HtmlFieldsMixin, Model):
     @property
     def html_fields(self):
         return ['introduction', 'other_details']
+
+    def save(self, *args, **kwargs):
+        if not self.age:
+            self.age = None
+
+        return super(Cv, self).save(*args, **kwargs)

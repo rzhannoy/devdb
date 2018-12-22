@@ -43,6 +43,7 @@ class UserResource(BaseResource):
             url(r'^(?P<resource_name>{})/login{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('login'), name='api_login'),
             url(r'^(?P<resource_name>{})/logout{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('logout'), name='api_logout'),
             url(r'^(?P<resource_name>{})/(?P<handle>.+){}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
+            url(r'^(?P<resource_name>{})/change-password{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('change_password'), name='api_change_password'),
         ]
 
     def _create_auth_response(self, request, user):
@@ -94,3 +95,17 @@ class UserResource(BaseResource):
             return self._create_auth_response(request, user)
 
         return self.create_error_response(request, 'credentials_invalid', http.HttpUnauthorized)
+
+    def change_password(self, request, **kwargs):
+        self.process_request(request)
+
+        user = request.user
+        data = self.deserialize(request, request.body)
+
+        if not user.check_password(data['old_password']):
+            return self.create_error_response(request, 'incorrect_password')
+
+        user.set_password(data['new_password'])
+        user.save()
+
+        return self.create_response(request, {'success': True})

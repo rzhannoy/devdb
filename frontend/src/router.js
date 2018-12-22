@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Home from './views/Home'
 import Profile from './views/Profile'
 import ProfileEdit from './views/ProfileEdit'
+import PrivacyPolicy from './views/PrivacyPolicy'
+import Tos from './views/Tos'
 
 Vue.use(Router)
 
@@ -25,6 +27,16 @@ export default new Router({
       path: '/my/edit',
       name: 'profile-edit',
       component: ProfileEdit,
+    },
+    {
+      path: '/i/privacy-policy',
+      name: 'privacy-policy',
+      component: PrivacyPolicy,
+    },
+    {
+      path: '/i/terms-of-service',
+      name: 'tos',
+      component: Tos,
     },
   ]
 })

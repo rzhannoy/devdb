@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from 'vuex'
 import Header from '../components/UIHeader'
 import ProfileForm from '../components/ProfileForm'
 

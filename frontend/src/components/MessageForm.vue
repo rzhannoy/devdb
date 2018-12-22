@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper-message-form">
-    <form class="message-form">
+    <form class="menu-form">
       <b-field
         :class="{'is-invalid': errors.has('message')}"
         :message="errors.first('message')">
@@ -74,12 +74,4 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.message-form
-  padding 20px 0
-
-  .actions
-    margin-top 20px
-
-    .button
-      margin-right 12px
 </style>

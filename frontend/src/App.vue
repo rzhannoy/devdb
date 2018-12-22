@@ -17,6 +17,8 @@ export default {
 }
 </script>
 
+<style src="buefy/dist/buefy.css" lang="css">
+</style>
 <style src="bulma/css/bulma.min.css" lang="css">
 </style>
 <style src="./app.styl" lang="stylus">

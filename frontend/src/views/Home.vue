@@ -51,6 +51,31 @@
           </div>
         </div>
       </div>
+
+      <div class="hero-foot">
+        <div class="foot-item"
+          v-if="!showLegal">
+          <a href=""
+            @click.prevent="showLegal = true">Legal</a>
+        </div>
+        <template v-else>
+          <div class="foot-item">
+            <router-link target="_blank"
+              :to="{ name: 'privacy-policy' }">
+              Privacy
+            </router-link>
+          </div>
+          <div class="foot-item">
+            <router-link target="_blank"
+              :to="{ name: 'tos' }">
+              Terms of Service
+            </router-link>
+          </div>
+          <div class="foot-item">
+            © 2018 DevDB
+          </div>
+        </template>
+      </div>
     </section>
   </div>
 </template>
@@ -73,6 +98,7 @@ export default {
       authMode: 'signUp',
       showAuthForm: false,
       isConfirming: false,
+      showLegal: false,
     }
   },
 
@@ -183,4 +209,32 @@ export default {
   padding 8px 20px
   font-weight 500
   font-size 18px
+
+.hero-foot
+  padding-bottom 20px
+  padding-right 15px
+  text-align right
+
+  +$mobile-only()
+    text-align center
+    padding-right 0
+
+.foot-item
+  display inline-block
+  margin-right 25px
+  color rgba(0,0,0,.4)
+
+  a
+    color rgba(0,0,0,.5)
+
+    &:hover
+      text-decoration underline
+
+  +$mobile-only()
+    margin-right 8px
+    letter-spacing 0
+    font-size 14px
+
+    a
+      letter-spacing 0
 </style>
