@@ -7,7 +7,7 @@
           <b-field
             :class="{'is-invalid': errors.has('oldPassword')}"
             :message="errors.first('oldPassword')">
-            <b-input name="oldPassword" placeholder="Old password"
+            <b-input name="oldPassword" placeholder="Old password" type="password"
               v-model="objData.old_password"
               v-validate="'required'">
             </b-input>
@@ -18,7 +18,7 @@
           <b-field
             :class="{'is-invalid': errors.has('newPassword')}"
             :message="errors.first('newPassword')">
-            <b-input name="newPassword" placeholder="New password"
+            <b-input name="newPassword" placeholder="New password" type="password"
               v-model="objData.new_password"
               v-validate="'required'">
             </b-input>
@@ -74,13 +74,19 @@ export default {
               this[types.SHOW_SUCCESS_MESSAGE]({ message: 'Password changed!' })
             })
             .catch((err) => {
-              console.log('ERROR', err)
+              this.isLoading = false
+              if (
+                err.response &&
+                err.response.data.message === 'incorrect_password'
+              ) {
+                this[types.SHOW_ERROR_MESSAGE]({ message: `Password's incorrect` })
+              }
             })
         }
       })
     },
 
-    ...mapMutations([types.SHOW_SUCCESS_MESSAGE]),
+    ...mapMutations([types.SHOW_SUCCESS_MESSAGE, types.SHOW_ERROR_MESSAGE]),
   },
 }
 </script>

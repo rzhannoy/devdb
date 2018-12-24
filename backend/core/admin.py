@@ -6,6 +6,10 @@ from django.contrib import admin
 from .models import *
 
 
+class CvAdmin(admin.ModelAdmin):
+    list_display = ['__unicode__', 'updated']
+
+
 class SkillAdmin(admin.ModelAdmin):
     list_display = ['__unicode__', 'position']
 
@@ -22,7 +26,7 @@ class LinkAdmin(admin.ModelAdmin):
     list_display = ['__unicode__', 'position']
 
 
-admin.site.register(Cv)
+admin.site.register(Cv, CvAdmin)
 admin.site.register(SkillGroup, SkillGroupAdmin)
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Project, ProjectAdmin)

@@ -10,7 +10,8 @@ from .tasks import send_email as send_email_async
 
 class Mailer(object):
     def send_email(self, email):
-        send_email_async.delay(email)
+        if not settings.DEBUG:
+            send_email_async.delay(email)
 
     def send_test(self):
         msg = EmailMultiAlternatives(

@@ -33,6 +33,9 @@ class BaseResource(ModelResource):
 
         return super(BaseResource, self).deserialize(request, data, format)
 
+    def get_schema(self, request, **kwargs):
+        return http.HttpForbidden()
+
     def create_error_response(self, request, message=None, response_class=http.HttpBadRequest):
         response = {'success': False}
         if message:

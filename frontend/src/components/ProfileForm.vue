@@ -95,8 +95,17 @@
             </div>
           </div>
         </div>
+        <div class="mtb">
+          <button class="button is-danger is-outlined"
+            @click.prevent="showDeleteModal = true">
+            Delete account
+          </button>
+        </div>
       </form>
     </Column>
+    <ProfileDeleteModal
+      :show="showDeleteModal"
+      @close="showDeleteModal = false"/>
   </div>
 </template>
 
@@ -120,6 +129,7 @@ import CvOtherDetailsWrapper from './CvOtherDetailsWrapper'
 import SkillGroupForm from './SkillGroupForm'
 import ProjectForm from './ProjectForm'
 import LinkForm from './LinkForm'
+import ProfileDeleteModal from './ProfileDeleteModal'
 
 export default {
   name: 'ProfileForm',
@@ -131,6 +141,7 @@ export default {
     SkillGroupForm, ProjectForm,
     LinkForm, Draggable,
     CvGeneralInfoForm, CvWillingToTryWrapper,
+    ProfileDeleteModal
   },
 
   props: {
@@ -154,6 +165,7 @@ export default {
       isLoading: false,
       objData: {},
       draggableOptions: conf.DRAGGABLE_OPTIONS,
+      showDeleteModal: false,
     }
   },
 
@@ -318,6 +330,9 @@ export default {
 
 <style scoped lang="stylus">
 @import "../styles/common.styl"
+
+.cv-form
+  padding-bottom 50px
 
 .actions-fixed
   position fixed

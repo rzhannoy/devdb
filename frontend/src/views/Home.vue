@@ -30,7 +30,7 @@
                 <div class="mbs">
                   <a href="https://devdb.io/devdb" target="_blank"
                     class="button button-link is-medium is-white">
-                    See how it looks
+                    See how it looks ➡️
                   </a>
                 </div>
                 <div>
@@ -53,6 +53,12 @@
       </div>
 
       <div class="hero-foot">
+        <div class="foot-item">
+          <a href="mailto:nrzhannoy@gmail.com">Contact</a>
+        </div>
+        <!-- <div class="foot-item">
+          <a href="">Forgot password</a>
+        </div> -->
         <div class="foot-item"
           v-if="!showLegal">
           <a href=""

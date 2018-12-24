@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404
+from django.utils.text import slugify
 
 from tastypie import fields
 from tastypie import http
@@ -42,8 +43,9 @@ class UserResource(BaseResource):
             url(r'^(?P<resource_name>{})/confirm{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('confirm'), name='api_confirm'),
             url(r'^(?P<resource_name>{})/login{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('login'), name='api_login'),
             url(r'^(?P<resource_name>{})/logout{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('logout'), name='api_logout'),
-            url(r'^(?P<resource_name>{})/(?P<handle>.+){}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
             url(r'^(?P<resource_name>{})/change-password{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('change_password'), name='api_change_password'),
+            url(r'^(?P<resource_name>{})/delete{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('handle_delete'), name='api_handle_delete'),
+            url(r'^(?P<resource_name>{})/(?P<handle>.+){}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
         ]
 
     def _create_auth_response(self, request, user):
@@ -60,6 +62,7 @@ class UserResource(BaseResource):
         self.method_check(request, allowed=['post'])
 
         data = self.deserialize(request, request.body)
+        data['handle'] = slugify(data['handle'])
         validation = User.validate(data)
 
         if not validation['is_valid']:
@@ -107,5 +110,18 @@ class UserResource(BaseResource):
 
         user.set_password(data['new_password'])
         user.save()
+
+        return self.create_response(request, {'success': True})
+
+    def handle_delete(self, request, **kwargs):
+        self.process_request(request)
+
+        user = request.user
+        data = self.deserialize(request, request.body)
+
+        if not user.check_password(data['password']):
+            return self.create_error_response(request, 'incorrect_password')
+
+        user.delete()
 
         return self.create_response(request, {'success': True})

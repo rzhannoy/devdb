@@ -31,10 +31,10 @@
                     View profile
                   </router-link>
                 </b-dropdown-item>
-                <!-- <b-dropdown-item
+                <b-dropdown-item
                   @click="showPasswordForm = true">
                   Change password
-                </b-dropdown-item> -->
+                </b-dropdown-item>
                 <b-dropdown-item
                   @click="handleLogout">
                   Log out
