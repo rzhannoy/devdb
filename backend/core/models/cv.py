@@ -58,6 +58,7 @@ class Cv(HtmlFieldsMixin, Model):
     age = models.PositiveSmallIntegerField(null=True, blank=True)
     gender = models.CharField(max_length=2, choices=GENDER_CHOICES, default=DONT_DISPLAY)
     introduction = models.TextField(blank=True)
+    skills_intro = models.CharField(max_length=500, blank=True)
     willing_to_try = models.TextField(blank=True)
     other_details = models.TextField(blank=True)
 
@@ -68,7 +69,10 @@ class Cv(HtmlFieldsMixin, Model):
 
     @property
     def html_fields(self):
-        return ['introduction', 'other_details']
+        return [
+            'introduction', 'other_details',
+            ('skills_intro', ['br']),
+        ]
 
     def save(self, *args, **kwargs):
         if not self.age:

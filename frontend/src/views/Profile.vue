@@ -15,6 +15,10 @@
             v-if="cv.introduction"
             v-html="cv.introduction"></p>
           <h2>Skills</h2>
+          <div class="tsp"
+            v-if="cv.skills_intro"
+            v-html="cv.skills_intro">
+          </div>
           <div class="cards-float cards-skills">
             <SkillGroupCard v-for="obj in cv.skill_groups"
               :key="obj.id"
@@ -158,4 +162,25 @@ export default {
     text-align center
     font-size 20px
     letter-spacing 1px
+
+.tsp >>>
+  width 75%
+  border-left 3px solid rgba(0,0,0,.08)
+  padding-top 8px
+  padding-bottom 8px
+  padding-left 16px
+  margin-top 25px
+  margin-bottom 25px
+  font-size 16px
+  line-height 1.66
+  color rgba(0,0,0,.66)
+
+  +$mobile-only()
+    width 100%
+    margin-top 0px
+    margin-bottom 20px
+    font-size 15px
+
+    br
+      display none
 </style>

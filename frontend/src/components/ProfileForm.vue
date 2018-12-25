@@ -46,6 +46,17 @@
         <CvGeneralInfoForm
           :obj="objData.cv"/>
 
+        <div class="card-brand">
+          <b-field label="Skills Footnote"
+            type="is-grey"
+            message="&laquo;br&raquo; is allowed">
+            <b-input placeholder="Can bounce between technologies, master new skills fast" type="textarea" rows="2"
+              v-model="objData.cv.skills_intro"
+              :maxlength="500"
+              :has-counter="false"></b-input>
+          </b-field>
+        </div>
+
         <SkillGroupForm v-for="(skillGroup, index) in obj.cv.skill_groups"
           :key="handleObjKey(skillGroup)" :obj="skillGroup"
           :index="index"
@@ -206,6 +217,7 @@ export default {
 
       if (validator.isValid) {
         this.isLoading = true
+        console.log(this.objData.cv.skills_intro)
         this[types.UPDATE_PROFILE]({ data: this.objData })
           .then(() => {
             const message = mode === 'auto' ? 'Auto-saved!' : 'Saved!'
