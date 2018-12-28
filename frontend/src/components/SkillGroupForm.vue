@@ -92,7 +92,7 @@ export default {
         group: this.obj.resource_uri,
         key: `sk_${this.$utils.genRandomString()}`,
         position: this.obj.skills.length + 1,
-        level: 1,
+        // level: 1,
       }
 
       this.obj.skills.push(skill)

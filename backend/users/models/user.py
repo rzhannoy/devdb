@@ -53,6 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     handle = models.CharField(max_length=120, unique=True)
     confirmation_code = models.CharField(max_length=40)
     token = models.CharField(max_length=300, blank=True)
+    show_skills_legend = models.BooleanField(default=False)
 
     extra_data = JSONField(default=dict, blank=True)
 
@@ -78,6 +79,9 @@ class User(AbstractBaseUser, PermissionsMixin):
             self.confirmation_code = gen_random_string()
 
         return super(User, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return settings.FRONTEND_URL + self.handle
 
     @staticmethod
     def validate(data):

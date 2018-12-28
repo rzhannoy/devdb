@@ -7,7 +7,7 @@ class Skill(Model):
 
     title = models.CharField(max_length=100, blank=True)
     position = models.PositiveSmallIntegerField(null=True, blank=True)
-    level = models.PositiveSmallIntegerField(default=1)
+    level = models.PositiveSmallIntegerField(default=0, null=True, blank=True)
 
     class Meta:
         ordering = ['position']

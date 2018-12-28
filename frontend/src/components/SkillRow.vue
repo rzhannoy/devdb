@@ -4,7 +4,8 @@
       <div class="is-pulled-left">
         {{obj.title}}
       </div>
-      <div class="skill-leds is-pulled-right">
+      <div class="skill-leds is-pulled-right"
+        v-if="obj.level">
         <div class="skill-led"
           v-for="i in fullLedsCount"
           :key="'f' + i"></div>

@@ -217,7 +217,6 @@ export default {
 
       if (validator.isValid) {
         this.isLoading = true
-        console.log(this.objData.cv.skills_intro)
         this[types.UPDATE_PROFILE]({ data: this.objData })
           .then(() => {
             const message = mode === 'auto' ? 'Auto-saved!' : 'Saved!'

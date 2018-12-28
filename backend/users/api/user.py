@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404
 from django.utils.text import slugify
+from django.db.models import Max
 
 from tastypie import fields
 from tastypie import http
@@ -12,6 +13,7 @@ from project.resources import BaseResource, DEFAULT_ALLOWED
 from project.auth import AnyReadAuthentication
 
 from users.models import User
+from core.models import Skill
 
 from .auth import UserAuthorization
 
@@ -47,6 +49,21 @@ class UserResource(BaseResource):
             url(r'^(?P<resource_name>{})/delete{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('handle_delete'), name='api_handle_delete'),
             url(r'^(?P<resource_name>{})/(?P<handle>.+){}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
         ]
+
+    def save(self, bundle, skip_errors=False):
+        bundle = super(UserResource, self).save(bundle, skip_errors=False)
+
+        group_ids = list(bundle.obj.cv.skill_groups.values_list('id', flat=True))
+        if group_ids:
+            level_max = Skill.objects.filter(
+                group_id__in=group_ids
+            ).aggregate(Max('level'))['level__max']
+
+            print level_max
+            bundle.obj.show_skills_legend = level_max > 0
+            bundle.obj.save()
+
+        return bundle
 
     def _create_auth_response(self, request, user):
         user_data = self.serialize_obj(request, user,

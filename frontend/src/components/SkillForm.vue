@@ -19,7 +19,7 @@
       </div>
       <div class="column is-4">
         <b-field>
-          <b-select placeholder="Skill level"
+          <b-select placeholder="Experience"
             v-model="obj.level">
             <option v-for="(value, key) in Skill.LEVEL_OPTIONS"
               :key="key" :value="key">

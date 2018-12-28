@@ -25,6 +25,10 @@
               :obj="obj"/>
           </div>
           <div class="is-clearfix"></div>
+          <div class="skills-footnote" v-if="obj.show_skills_legend">
+            <small>* Bars represent experience in years.</small>
+          </div>
+          <div class="is-clearfix"></div>
           <div class="card-brand card-open-to"
             v-if="cv.willing_to_try">
             <b>Willing to try</b>:
@@ -164,7 +168,6 @@ export default {
     letter-spacing 1px
 
 .tsp >>>
-  width 75%
   border-left 3px solid rgba(0,0,0,.08)
   padding-top 8px
   padding-bottom 8px
@@ -176,11 +179,18 @@ export default {
   color rgba(0,0,0,.66)
 
   +$mobile-only()
-    width 100%
     margin-top 0px
     margin-bottom 20px
     font-size 15px
 
     br
       display none
+
+.skills-footnote
+  float left
+  margin-top -18px
+  margin-bottom 18px
+
+  small
+    color rgba(0,0,0,.5)
 </style>

@@ -7,10 +7,11 @@ export default function (conf) {
   })
 
   resource.LEVEL_OPTIONS = {
-    1: 'Beginner',
-    2: 'Intermediate',
-    3: 'Advanced',
-    4: 'Guru',
+    0: `Don't display`,
+    1: '1 year',
+    2: '2 years',
+    3: '3 years',
+    4: '4+ years',
   }
 
   return resource

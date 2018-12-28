@@ -68,7 +68,6 @@ export default {
           this.User
             .post('change-password/', this.objData)
             .then((res) => {
-              console.log('SUCCESS', res)
               this.isLoading = false
               this.$emit('close')
               this[types.SHOW_SUCCESS_MESSAGE]({ message: 'Password changed!' })
