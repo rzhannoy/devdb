@@ -47,6 +47,8 @@ class UserResource(BaseResource):
             url(r'^(?P<resource_name>{})/logout{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('logout'), name='api_logout'),
             url(r'^(?P<resource_name>{})/change-password{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('change_password'), name='api_change_password'),
             url(r'^(?P<resource_name>{})/delete{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('handle_delete'), name='api_handle_delete'),
+            url(r'^(?P<resource_name>{})/count{}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('gen_count'), name='api_gen_count'),
+
             url(r'^(?P<resource_name>{})/(?P<handle>.+){}$'.format(self._meta.resource_name, trailing_slash()), self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
         ]
 
@@ -59,7 +61,6 @@ class UserResource(BaseResource):
                 group_id__in=group_ids
             ).aggregate(Max('level'))['level__max']
 
-            print level_max
             bundle.obj.show_skills_legend = level_max > 0
             bundle.obj.save()
 
@@ -142,3 +143,11 @@ class UserResource(BaseResource):
         user.delete()
 
         return self.create_response(request, {'success': True})
+
+    def gen_count(self, request, **kwargs):
+        self.process_request(request, ['get'])
+
+        return self.create_response(request, {
+            'success': True,
+            'count': User.objects.count(),
+        })

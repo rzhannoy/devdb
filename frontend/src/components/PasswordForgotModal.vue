@@ -6,21 +6,18 @@
         @click="handleClose"></div>
       <div class="modal-content">
         <form>
-          <div class="fs18 mbs">
-            You are about to permanently delete your profile from DevDB 😞 This action cannot be undone. Please confirm it with your password:
-          </div>
           <b-field
-            :class="{'is-invalid': errors.has('password')}"
-            :message="errors.first('password')">
-            <b-input placeholder="Your password" type="password" name="password"
-              v-model="password"
+            :class="{'is-invalid': errors.has('email')}"
+            :message="errors.first('email')">
+            <b-input placeholder="Your email" type="email" name="email"
+              v-model="email"
               v-validate="'required'"></b-input>
           </b-field>
           <b-field>
-            <button class="button is-danger"
+            <button class="button is-brand"
               :class="{'is-loading': isLoading}"
               @click.prevent="handleDelete">
-              Delete forever
+              Request recovery link
             </button>
             <button class="button is-text" v-if="!isLoading"
               @click.prevent="handleClose">
@@ -47,7 +44,9 @@ export default {
   mixins: [modalMixin],
 
   data () {
-    return {}
+    return {
+      email: '',
+    }
   },
 
   methods: {

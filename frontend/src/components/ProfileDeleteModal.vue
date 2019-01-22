@@ -48,6 +48,7 @@ export default {
 
   data () {
     return {
+      isLoading: false,
       password: '',
     }
   },
@@ -60,6 +61,7 @@ export default {
     handleDelete () {
       this.$validator.validateAll().then((valid) => {
         if (valid) {
+          this.isLoading = true
           this.User
             .post('delete/', { password: this.password })
             .then(() => {
@@ -68,6 +70,7 @@ export default {
               this.$router.push({ name: 'home' })
             })
             .catch(() => {
+              this.isLoading = false
               this[types.SHOW_ERROR_MESSAGE]({ message: `Password's incorrect` })
             })
         }

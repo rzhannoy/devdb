@@ -2,7 +2,7 @@ Hey {{name}},
 
 Thanks for joining devdb.
 
-Please open the following link within the next 3 days to confirm your email and finish registration:
+Please open the following link to confirm your email and finish registration:
 {{link|safe}}
 
 Sincerely,

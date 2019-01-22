@@ -27,10 +27,10 @@
                   Modern & Opinionated<br>
                   CVs for Developers
                 </h1>
-                <div class="mbs">
+                <div>
                   <a href="https://devdb.io/devdb" target="_blank"
-                    class="button button-link is-medium is-white">
-                    See how it looks ➡️
+                    class="button button-link is-main is-demo is-medium is-white">
+                    See how it looks
                   </a>
                 </div>
                 <div>
@@ -38,6 +38,10 @@
                     @click="showAuthForm = true">
                     Get started for free
                   </button>
+                </div>
+                <div class="users-count"
+                  :class="{'is-invisible': !showUserCount}">
+                  <small><b>{{userCount}}</b> already did</small>
                 </div>
               </div>
 
@@ -78,7 +82,7 @@
             </router-link>
           </div>
           <div class="foot-item">
-            © 2018 DevDB
+            © 2019 DevDB
           </div>
         </template>
       </div>
@@ -105,19 +109,32 @@ export default {
       showAuthForm: false,
       isConfirming: false,
       showLegal: false,
+      userCount: 0,
+      showUserCount: false,
     }
   },
 
   created () {
     document.title = 'DevDB • Best CV builder for developers'
     this.handleEmailConfirmation()
+    this.handleUserCount()
   },
 
   computed: {
-    ...mapState(['user']),
+    ...mapState(['user', 'User']),
   },
 
   methods: {
+    handleUserCount () {
+      this.User
+        .get('count/')
+        .then((res) => {
+          this.userCount = res.data.count
+          this.showUserCount = true
+          setTimeout(() => { this.showUserCount = false }, 2500)
+        })
+    },
+
     initLogin () {
       this.authMode = 'login'
       this.showAuthForm = true
@@ -189,6 +206,7 @@ export default {
 .lp-wrapper
   margin -40px auto 0
   width 350px
+  text-align left
 
   +$mobile-only()
     margin-top -60px
@@ -207,6 +225,8 @@ export default {
   .button.button-link
     +$desktop-only()
       padding-left 0
+      padding-right 0
+      padding-bottom 20px
 
     &:hover
       background-color #fff
@@ -215,6 +235,13 @@ export default {
   padding 8px 20px
   font-weight 500
   font-size 18px
+
+.button.is-demo
+  color #004FD9 !important
+  // font-weight bold
+
+  &:hover
+    opacity .75
 
 .hero-foot
   padding-bottom 20px
@@ -229,6 +256,7 @@ export default {
   display inline-block
   margin-right 25px
   color rgba(0,0,0,.4)
+  font-size 14px
 
   a
     color rgba(0,0,0,.5)
@@ -239,8 +267,12 @@ export default {
   +$mobile-only()
     margin-right 8px
     letter-spacing 0
-    font-size 14px
 
     a
       letter-spacing 0
+
+.users-count
+  margin-top 12px
+  color rgba(0,0,0,.6)
+  line-height 1
 </style>

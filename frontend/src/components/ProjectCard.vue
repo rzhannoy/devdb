@@ -125,4 +125,7 @@ export default {
       margin-left 1.2em !important
       line-height 1.66
       font-size 17px
+
+    p
+      font-size 17px !important
 </style>
