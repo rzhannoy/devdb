@@ -41,7 +41,7 @@
                 </div>
                 <div class="users-count"
                   :class="{'is-invisible': !showUserCount}">
-                  <small><b>{{userCount}}</b> already did</small>
+                  <small><b>{{userCount}}</b> already did!</small>
                 </div>
               </div>
 
