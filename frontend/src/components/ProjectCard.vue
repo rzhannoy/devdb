@@ -21,26 +21,20 @@
             <b>Role</b>: {{obj.role}}
           </div>
         </div>
-        <div class="columns is-gapless"
-          v-if="obj.stack || obj.scope">
-          <div class="column column-left" v-if="obj.stack">
-            <div class="project-section">
-              <div class="section-heading">
-                Stack
-              </div>
-              <div class="section-content" v-html="obj.stack">
-              </div>
-            </div>
-          </div>
 
-          <div class="column" v-if="obj.scope">
-            <div class="project-section">
-              <div class="section-heading">
-                Scope
-              </div>
-              <div class="section-content" v-html="obj.scope">
-              </div>
-            </div>
+        <div class="project-section" v-if="obj.stack">
+          <div class="section-heading">
+            Stack
+          </div>
+          <div class="section-content" v-html="obj.stack">
+          </div>
+        </div>
+
+        <div class="project-section"  v-if="obj.scope">
+          <div class="section-heading">
+            Scope
+          </div>
+          <div class="section-content" v-html="obj.scope">
           </div>
         </div>
       </div>
@@ -74,7 +68,7 @@ export default {
 .card-project
   margin-bottom 25px
   padding-top 25px
-  padding-bottom 25px
+  padding-bottom 5px
 
   +$mobile-only()
     padding-top 20px
@@ -113,8 +107,7 @@ export default {
       padding-right 20px !important
 
   .project-section >>>
-    +$mobile-only()
-      margin-bottom 20px
+    margin-bottom 20px
 
     .section-heading
       font-weight bold

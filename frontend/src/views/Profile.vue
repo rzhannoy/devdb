@@ -159,6 +159,9 @@ export default {
   font-size 18px
   color #000
 
+  p
+    margin-bottom .75em !important
+
 .col-inactive
   padding-top 50px
 
