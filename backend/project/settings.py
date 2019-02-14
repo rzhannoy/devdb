@@ -15,8 +15,6 @@ PUBLIC_DIR = os.path.abspath(os.path.join(PARENT_DIR, '../../public'))
 
 sys.path.insert(0, os.path.abspath(os.path.join(PARENT_DIR, 'libs')))
 
-SECRET_KEY = '(pmk9(b79_pu=9bxa1ii^*r3kpy75-q(@rcye*#un)6hyfuj17'
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
