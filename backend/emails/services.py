@@ -9,8 +9,8 @@ from .tasks import send_email as send_email_async
 
 
 class Mailer(object):
-    def send_email(self, email):
-        if not settings.DEBUG:
+    def send_email(self, email, force=False):
+        if not settings.DEBUG or force:
             send_email_async.delay(email)
 
     def send_test(self):
@@ -21,7 +21,7 @@ class Mailer(object):
             ['nrzhannoy@gmail.com']
         )
 
-        self.send_email(msg)
+        self.send_email(msg, True)
 
     def send_registration_email(self, user):
         subject = 'Get started with DevDB'

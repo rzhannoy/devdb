@@ -3,10 +3,9 @@ import sys
 
 from corsheaders.defaults import default_headers
 
-try:
-    from settings_local import *
-except ImportError:
-    pass
+from settings_local import *
+from credentials import *
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -110,10 +109,6 @@ HTML_ALLOWED_TAGS = [
 ]
 
 # DJANGO-ANYMAIL
-ANYMAIL = {
-    'MAILGUN_API_KEY': 'key-4c2df4a7f19aeff7dd42329c31c6056b',
-    'MAILGUN_SENDER_DOMAIN': 'mg.devdb.io',
-}
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
 DEFAULT_FROM_EMAIL = 'DevDB <hi@devdb.io>'
 
